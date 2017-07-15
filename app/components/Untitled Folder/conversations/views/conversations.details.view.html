@@ -1,0 +1,69 @@
+<section class="conversation-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class="conv-speech-header">
+                    <h2>conversations</h2>
+                </div>
+            </div>
+        </div>
+        <!--// end conversation header -->
+        <!--start conversation-speech-section -->
+        <div class="row conv-speech">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                <div ng-class="(ticketDetails.status == 'O') ? 'conv-ticket_card open-status' : ((ticketDetails.status == 'P') ? 'conv-ticket_card processing-status' : ((ticketDetails.status == 'W') ? 'conv-ticket_card awating-status' : 'conv-ticket_card resolved-status'))">
+
+                    <h3 class="ticket-id">Ticket id <span class="blue-c">{{ticketDetails.ticket_id}}</span></h3>
+                    <p class="sub"><b>Subject: </b>{{ticketDetails.title}}</p>
+                    <p class="sub-sub">{{ticketDetails.description}}</p>
+                    <div class="ticket-status" ng-if="ticketDetails.status == 'O'">Open</div>
+                    <div class="ticket-status" ng-if="ticketDetails.status == 'P'">Processing</div>
+                    <div class="ticket-status" ng-if="ticketDetails.status == 'W'">Awaiting your reply</div>
+                    <div class="ticket-status" ng-if="ticketDetails.status == 'R'">Resolved</div>
+                    <div class="t_date">{{ticketDetails.added_timestamp}}</div>
+                </div>
+            </div>
+        </div>
+        <!--// end conversation-speech-section 1st paret-->
+        <div class="row conv-speech">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                <a href="javascript:void(0);">
+                    <!-- <div class="collapse-expand-panel">Collapse all &nbsp;&nbsp; <span class="sign"> - </span></div> -->
+                    <div class="collapse-expand-panel">conversations History</div>
+                </a>
+                <div class="chat-box">
+                    <ul class="list-unstyled" ng-repeat="threads in ticketDetails.all_conversation_threads">
+                        <li class="mar-btm clearfix">
+                            <div ng-class="(threads.fk_user_id == null) ? 'media-left' : 'media-right'">
+                                <img ng-if="threads.fk_user_id == null" src="assets/img/avatar/avatar_1.svg" class="img-circle img-small" alt="Profile Picture">
+                                <img ng-if="threads.fk_admin_id == null" src="{{ticketDetails.user_profile_pic_url}}" class="img-circle img-small" alt="Profile Picture">                       
+                            </div>
+                            <div ng-class="(threads.fk_user_id == null) ? 'media-body pad-hor no-padding-right' : 'media-body pad-hor speech-right'">
+                                <div class="speech">
+                                    <p>{{threads.description}}</p>
+                                    <p class="speech-time">{{threads.added_timestamp}}</p>
+                                </div>
+                            </div>
+                            <!-- <a href="javascript:void(0);" class="sign expend_speech">-</a> -->
+                        </li>
+                    </ul>
+                    <a id="bottom"></a> Latest Message !
+                </div>
+                <!-- Start Sending message -->
+                <div class="panel-footer mar-btm clearfix">
+                    <div class="media-left"> <img src="{{ticketDetails.user_profile_pic_url}}" class="img-circle img-small" alt="Profile Picture"></div>
+
+                    <form class="agent-code-add-form" name="addConversationThreads" role="form" ng-submit="addTickitThreads(conversationThreads);"> 
+                        <div class="media-body pad-hor no-padding-right">
+                            <div class="speech-reply">
+                                <textarea class="form-control" id="send-message-text" rows="2" placeholder="Reply here...."  ng-model="conversationThreads.description" ng-required="true"></textarea>
+                                <!-- <a href="" ng-click="addTickitThreads(conversationThreads);" class="send"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a> -->
+                                <input type="submit" class="send" ng-disabled="addConversationThreads.$invalid" value=""> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

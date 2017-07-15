@@ -1,0 +1,31 @@
+<section class="conversation-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class="conversation-header">
+                    <h3>new conversations</h3>
+                </div>
+            </div>
+        </div>
+        <!--// end conversation header -->
+     
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 text-center">
+                <p class="error-message show" ng-if="errorMessage">{{errorMessage}}</p>
+                <form class="invitation-form" role="form" name="addTicket" ng-submit="addTickit(ticketData)" novalidate>
+                    <div class="conversation-body">
+                        <div class="form-group  conversations-sub">
+                            <input type="text" class="form-control" id="name" ng-model="ticketData.subject" placeholder="SUBJECT" ng-required="true">
+                        </div>
+                        <div class="form-group conversations-des">
+                            <textarea class="form-control" rows="8" id="MESSAGE" ng-model="ticketData.description" placeholder="DESCRIPTION" ng-required="true"></textarea>
+                        </div>
+                        <div class="form-group conversations-new-submit">
+                            <input type="submit" id="code" value="SUBMIT" ng-disabled="addTicket.$invalid" class="btn btn-blue">
+                        </div>
+                    </div>
+                </form>    
+            </div>
+        </div>
+    </div>
+</section>

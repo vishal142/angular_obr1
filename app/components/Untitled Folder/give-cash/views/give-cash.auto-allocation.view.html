@@ -1,0 +1,89 @@
+    <section class="wallet-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <div class=" wallet-header">
+                    <h2><a href="javascript:void(0)"> MPokket Wallet  </a></h2>
+                    <h2 class="active">BANK</h2>
+                    </div>
+                </div>
+            </div>
+            <!--// end wallet header -->
+            <div class="row wallet-balance-allocation">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
+                    <div class="balance-addcash-orange">
+                        <h5>wallet balance</h5>
+                       <!--  <h3><span class="rupee-sign">2,00,000</span></h3> -->
+
+                        <h3><span class="rupee-sign">{{autoAllocateData.wallet_amount | currency:"":0}}</span></h3>
+
+                        <a href="javascript:void(0);" ng-click="viewAddCashPopup();" class="btn btn-success add_cash pull-right" title="Load Cash">Load Cash</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left">
+                    <div class=" balance-givecash-white">
+                        <form class="login-form" name="giveCash" role="form" novalidate ng-submit="giveCashAutoAllocation();">
+                            <h6>AFTER GIVING CASH, YOUR NEW WALLET BALANCE WILL BE</h6>
+                            <h3><span class="rupee-sign">{{updatedWalletAmount | currency:"":0}}</span></h3>
+                            <!-- <a href="javascript:void(0)" class="btn btn-success give_cash pull-right btn-round " title="GIVE CASH" ng-click="giveCashAutoAllocation();">GIVE CASH</a> -->
+
+                        <input type = "submit" value="Give Cash" class="btn btn-success give_cash pull-right btn-round"  ng-disabled = "totalAmt == '0'" /> 
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--// end wallet-auto-allocation -->
+            <div class="row wallet-auto-allocation">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left ">
+                    <div class="auto_alo_blue clearfix">
+                        <h5>AUTO ALLOCATION</h5>
+                        <a href="#/dashboard/give-cash/select-user" class="btn btn-success select_users pull-right btn-round " title="select users">select user</a>
+                    </div>
+                </div>
+            </div>
+            <!--// end AUTO ALLOCATION heading -->
+            <div class="row auto-allocation-table">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1 text-left  ">
+                    <div class="table-responsive default-calculate-table">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Amount</th>
+                                    <th>Number</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="lists in autoAllocateData.auto_allocated">
+                                    <td>
+                                        <input type="text" ng-model="lists.amount" ng-disabled="true">
+                                    </td>                                    
+                                    <td>
+                                        <input type="text" ng-model="lists.total_loan_no" max="{{lists.total_loan_no}}" positive-number-mask="" ng-change="changeAutoAllocation();">
+                                    </td>                                    
+                                    <td>
+                                        <input type="text" ng-value="lists.amount * lists.total_loan_no" ng-disabled="true">
+                                    </td>
+                                </tr>
+
+                                <tr class="footer_table">
+                                    <td>
+                                        <input type="text" value="Total Allocation" ng-disabled="true">
+                                    </td>
+                                    <td>
+                                        <input type="text" ng-model="totalQty" ng-disabled="true">
+                                    </td>
+                                    <td>
+                                        <input type="text" ng-model="totalAmt" ng-disabled="true">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--// end wallet-auto-allocation -->
+        </div>
+        </div>
+    </section>

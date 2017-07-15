@@ -1,0 +1,99 @@
+<section class="conversation-section">
+    <div class="container">
+        <!-- slider -->
+        <div class="row">
+                <div id="myCarousel" class="carousel slide lender_slider" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="assets/img/lender_transaction/slider1.jpg" alt="slider1">
+                        </div>
+                        <div class="item">
+                            <img src="assets/img/lender_transaction/slider2.jpg" alt="slider2">
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!-- slider -->
+        <!-- content -->
+        <div class="row irr_sec">
+            <div class="col-sm-2 col-md-2 col-lg-2 irr_bg">
+                <h2>IRR</h2>
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5 actual_bg">
+                <strong>{{transactionDetails.irr_actual}}%</strong>
+                <span>Actual</span>
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-5 project_bg">
+                <strong>{{transactionDetails.irr_projected}}%</strong>
+                <span>projected</span>
+            </div>
+        </div>
+        <div class="row white_bg">
+       <div id="parentHorizontalTab">
+            <ul class="resp-tabs-list tab_hdng hor_1 clearfix">
+                <li>
+                    <strong>cash given</strong>
+                    <span ng-if="transactionDetails.cash_given == null"><i class="fa fa-inr" aria-hidden="true"></i>0</span>
+                    <span ng-if="transactionDetails.cash_given != null"><i class="fa fa-inr" aria-hidden="true"></i>{{transactionDetails.cash_given}}</span>
+                </li>
+                <li> 
+                    <strong>cash received</strong>
+                    <span ng-if="transactionDetails.cash_received == null"><i class="fa fa-inr" aria-hidden="true"></i>0</span>
+                    <span ng-if="transactionDetails.cash_received != null"><i class="fa fa-inr" aria-hidden="true"></i>{{transactionDetails.cash_received}}</span>
+                </li>
+                <li>
+                    <strong>Repayment Pending</strong>
+                    <span ng-if="transactionDetails.cash_pending == null"><i class="fa fa-inr" aria-hidden="true"></i>0</span>
+                    <span ng-if="transactionDetails.cash_pending != null"><i class="fa fa-inr" aria-hidden="true"></i>{{transactionDetails.cash_pending}}</span>
+                </li>
+                <li>
+                    <strong>Cash offered</strong>
+                    <span ng-if="transactionDetails.cash_offered == null"><i class="fa fa-inr" aria-hidden="true"></i>0</span>
+                    <span ng-if="transactionDetails.cash_offered != null"><i class="fa fa-inr" aria-hidden="true"></i>{{transactionDetails.cash_offered}}</span>
+                </li>
+            </ul>
+       </div>
+       <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+           <div class="table-responsive-sec clearfix">
+                <h4>payments</h4>
+               <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  ng-if="transactionDetails.payments.length > 0" ng-repeat="payments in transactionDetails.payments">
+                        <td>{{payments.scheduled_payment_date}}</td>
+                        <td><i class="fa fa-inr" aria-hidden="true"></i>{{payments.lender_repayment_amount}}</td>
+
+                        <td><span  ng-if="payments.payment_status == '1-O'" class="ovrdue_txt">OVERDUE</span>
+                        <span  ng-if="payments.payment_status == '2-D'" class="due_txt">DUE</span>
+                        <span  ng-if="payments.payment_status == '3-U'" class="open_txt">UPCOMING</span>
+                        <span  ng-if="payments.payment_status == '4-P'" class="close_txt">PAID</span></td>
+
+                        <td><a  href="javascript:void(0);" ng-click="viewTransactionDetailsPopup(payments.fk_user_loan_id);" title="View details"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                      </tr>
+                      <tr ng-if="transactionDetails.payments.length < 1" class="ng-scope">
+                        <td align="center" colspan="5">No record found.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+           </div>
+           <a ng-if="transactionDetails.payments.length > 0" href="#/dashboard/transactions/payments" class="show_more">Show more</a>
+        </div>
+       </div>
+       </div>
+        <!-- content -->
+    </div>
+</section>

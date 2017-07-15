@@ -1,0 +1,100 @@
+<section class="profile-section">
+    <div class="container">
+        <div class="hero-section">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                    <div class="hero-panel text-left clearfix">
+                        <h1>edit bank</h1>
+                        <ul class="right-hero-panel clearfix">
+                            <li>
+                                <a href="#/dashboard/profile/details"> <i class="fa-p profile"></i>
+                                    <p>profile</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/kyc"> <i class="fa-p kyc"></i>
+                                    <p>kyc</p>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#/dashboard/profile/bank"> <i class="fa-p bank"></i>
+                                    <p>bank</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--// end row -->
+            <!--// end hero-panel -->
+            <div class="hero-body text-left status ">
+                <p class="error-message show" ng-if="errorMessage">{{errorMessage}}</p>
+                <p class="success-message show" ng-if="successMessage">{{successMessage}}</p>
+                <form class="invitation-form" role="form" name="bankEdit" ng-submit="doBankEdit(userBankDetails)" novalidate>
+
+                    <!-- <div ng-class="(userBankDetails.bank_status == 'R') ? 'row status_check hero_row decline' : (userBankDetails.bank_status == 'P') ? 'row status_check hero_row pending' : 'row status_check hero_row approve'"> -->
+                    <div ng-class="(userBankDetails.bank_status == 'A') ? 'row status_check hero_row approve' : (userBankDetails.bank_status == 'R') ? 'row status_check hero_row decline' : 'row status_check hero_row pending'">
+
+                        <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                            <h2>{{userBankDetails.bank_name}}</h2>
+                            <!-- <a href="javascript:void(0);" class="box-btn">set as primary</a> -->
+                        </div>
+                        <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 text-left  ">
+                            <div class="right-box-hero clearfix">
+                                <div class="left-edit-panel clearfix">
+                                    <div class="group-block">
+                                        <label for="ifsc_code">ifsc code:</label>
+                                        <div class="form-group search-btn">
+                                            <input type="text" class="form-control" ng-model="userBankDetails.ifsc_code" ng-required="true">
+                                           <label class="search-field-form" ng-click="doSearchIFSCCode();"><i class="fa fa-search fa-fw" aria-hidden="true"></i><span class="sr-only">Search icons</span></label>                                          
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="name_bank">name of bank:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userBankDetails.bank_name" ng-required="true" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="branch_l">branch:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userBankDetails.bank_branch" ng-required="true" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="city_l">city:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userBankDetails.bank_city" ng-required="true" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="state_l">state:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userBankDetails.bank_state" ng-required="true" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="a_c_no">a/c no:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userBankDetails.account_number" ng-required="true"  positive-number-mask="">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                </div>
+                                <div class="btn_group_sav_cancl">
+                                    <input type="submit" id="code" value="SAVE" class="btn btn-round btn-orange btn_sm" ng-disabled="bankEdit.$invalid">
+                                    <a href="javascript:void(0);" class="btn btn-round btn-gray btn_sm btn_cancl" title="add cash">cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

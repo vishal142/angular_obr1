@@ -1,0 +1,115 @@
+ <header class="container-fluid mainHeader">
+    <nav class="container">
+      <ul class="mainMenu">
+          <li><a href="#">Latest Updates</a></li>
+            <li><a href="#/home/how-to-get-involved">How to get Involved</a></li>
+            <li><a href="#/home/about-us">About</a></li>
+            <li><a href="#/home/contact-us">Contact</a></li>
+      </ul>
+      <ul class="topRightSec">
+      <li><a href="#/home/sign-in">Login</a></li>
+        <li class="active"><a href="#/home/sign-up">Register</a></li>
+        <li><span>212</span><i class="fa fa-bell-o" aria-hidden="true"></i></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="mainBody">
+    <div class="container-fluid">
+      <div class="row registrationForm">
+        <div class="col-lg-9 col-md-10 col-sm-10 col-xs-10 col-centered">
+          <h1>Registration</h1>
+
+          <br>
+   <div class="alert alert-danger" ng-if="errorMessage">{{errorMessage}}</div>
+            <form class="registrationFormMain" name ="regForm" role="form" ng-submit="doRegitration(regData)" novalidate>
+              <div class="regFormRow">
+                <div class="regFormLeft">
+                  <p>Email Id <i>*</i></p>
+                  <input type="email" ng-model="regData.email">
+                   
+                </div>
+                <div class="regFormRight">
+                 <p>Phone Number<i>*</i></p>
+                  <input type="text" ng-model="regData.phone">
+                </div>
+              </div>
+            <!--<div class="regFormRow">
+                <div class="regFormFull">
+                  <div class="uploadImg"><img src="assets/images/demo-img.png" id="profile_image_preview"></div>
+                  <div class="uploadForm">
+                    <p>Upload your picture</p>
+                    <input type="file" id="profile_image">
+                  </div>
+                </div>
+              </div>-->
+
+              <div class="regFormRow">
+              <div class="regFormFull checkBoxSec">
+              </div>
+              </div>
+
+              <div class="regFormRow">
+              <div class="regFormFull checkBoxSec">
+              </div>
+              </div>
+              <div class="regFormRow">
+                <div class="regFormLeft">
+                  <p>First Name </p>
+                  <input type="text" ng-model="regData.fname">
+                  
+                </div>
+                <div class="regFormRight">
+                  <p>Last Name</p>
+                  <input type="text" ng-model="regData.lname">
+                </div>
+              </div>
+
+              <div class="regFormRow">
+                <div class="regFormLeft">
+                  <p>Password<i>*</i></p>
+                  <input type="password" ng-model="regData.password">
+                  
+                </div>
+
+                <div class="regFormRight">
+                  <p>Address <i>*</i></p>
+                  <input type="text" ng-model="regData.address">
+                </div>
+              </div>
+
+
+              <div class="regFormRow">
+                <div class="regFormLeft">
+                  <input type="checkbox" class="disclaimerCheck" ng-model="regData.agree">
+                   <p class="disclaimerClick">I Agree to <a id="single_image">Volunteer Disclaimer</a> <i>*</i></p>
+                  <div style="display:none">
+                    <div id="data" class="popupDisc">
+                      <h2>Volunteer Disclaimer</h2>
+                      <p>VOLUNTEER DISCLAIMER-RELEASE: By Clicking the checkbox and/or signing this disclaimer I as an individual and/or on behalf of and all of its officers, directors, volunteers and representatives (“Our” or “We”), agree to forever release, hold harmless and unconditionally indemnify Operation BBQ Relief, a Missouri Not-For-Profit Corporation and all of its officers, directors, employees, assignees, representatives, agents and volunteers from and against any and all liabilities, claims, damages, losses or expenses whatsoever arising out of my/Our participation as a volunteer(s) for Operation BBQ Relief. I acknowledge and agree that any and all of my/Our volunteer services, materials and costs to and for Operation BBQ Relief are to be completed without any remuneration or monetary benefits whatsoever and I/We am/are solely responsible for my/Our own insurance coverage (medical, automobile, liability or any other) and that I/We am/are not covered in any way whatsoever by any of Operation BBQ Relief's Insurance. I also give my/Our permission to Operation BBQ Relief to use any photographs taken of me/Our (Organization volunteers) for marketing or other purposes.</p>
+                      <a href="#" class="doneBtn">Done</a>
+                    </div>
+                  </div> 
+                <!--   <a id="inline" href="#data">This shows content of element who has </a>
+                    <div style="display:none"><div id="data">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div> -->
+                </div>
+              </div> 
+              <div class="regFormRow">
+                <!-- <div class="regFormLeft">
+                  <p>Signature <i>*</i></p>
+                  <div class="signatureBlock">Tap to Sign it</div>
+                </div> -->
+                <div class="regFormRight">
+                  <input type="submit" value="Submit" class="regSubmit">
+                </div>
+              </div> 
+            </form>
+        </div>
+      </div>
+    </div>
+    <footer class="footerSec container-fluid">
+      <p>&copy; 2017 Oberation BBQ Relief. All Rights Reserved.</p>
+  </footer>
+  </div>
+
+
+

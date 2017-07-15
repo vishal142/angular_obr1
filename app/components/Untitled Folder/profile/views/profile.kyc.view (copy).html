@@ -1,0 +1,133 @@
+<section class="profile-section">
+    <div class="container">
+        <div class="hero-section profile_kyc_view">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                    <div class="hero-panel text-left clearfix">
+                        <h1>kyc</h1>
+                        <ul class="right-hero-panel clearfix">
+                            <li class="details_button">
+                                <a ng-click="viewKYCInfo();" class="btn btn-round btn-white" title="KYC details">
+                                    <i class="fa fa-info" aria-hidden="true"></i> KYC details</a>
+                            </li>
+                            <li class="addmore">
+                                <a href="#/dashboard/profile/kyc-add" class="btn btn-round btn-orange" title="ADD MORE">
+                                    ADD MORE</a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/details"> <i class="fa-p profile"></i>
+                                    <p>profile</p>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#/dashboard/profile/kyc"> <i class="fa-p kyc"></i>
+                                    <p>kyc</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/bank"> <i class="fa-p bank"></i>
+                                    <p>bank</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-body text-left status profile_view">
+                <!-- <div dir-paginate="lists in userKYC|itemsPerPage:itemsPerPage" current-page="pageno" total-items="total_count" id="{{lists.id}}" class="ng-scope">
+
+                    <div class="row hero_row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                            <h2>{{lists.document_name}}</h2>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-10col-lg-10 text-left  ">
+                            <div class="right-box-hero clearfix">
+                                <div class="left-view-panel clearfix">
+                                    <div>
+                                        <p class="label-css">Document type:</p>
+                                        <p class="label-css-strg" ng-if="lists.document_type == 'A'">ADDRESS PROOF</p>
+                                        <p class="label-css-strg" ng-if="lists.document_type == 'F'">FINANCIAL PROOF</p>
+                                        <p class="label-css-strg" ng-if="lists.document_type == 'I'">IDENTITY PROOF</p>
+                                        <p class="label-css-strg" ng-if="lists.document_type == 'D'">DOB PROOF</p>
+                                        
+                                    </div>
+                                    <div>
+                                        <p class="label-css">DOCUMENT name:</p>
+                                        <p class="label-css-strg">{{lists.document_name}}</p>
+                                    </div>
+                                    <div>
+                                        <p class="label-css">ID NUMBER:</p>
+                                        <p class="label-css-strg">{{lists.kyc_data}}</p>
+                                    </div>
+                                </div>
+                                <div class="right-view-panel clearfix">
+                                    <div>
+                                        <p class="label-css max-view-label">PHOTO:
+                                            <br/> (Front &amp; back)</p>
+                                        <div class="pancard-view">             
+                                            <div ng-if="lists.front_img_url == ''" class="">
+                                                NO FRONT IMAGE
+                                            </div>                                            
+                                            <div ng-if="lists.front_img_url != ''"class="upload_container">
+                                                <img src="{{lists.front_img_url}}" alt="{{lists.document_name}}" title="{{lists.document_name}}" class="img-responsive">
+                                            </div>
+
+                                            <div ng-if="lists.back_img_url == ''" class="">
+                                                NO BACK IMAGE
+                                            </div>                                             
+                                             <div ng-if="lists.back_img_url != ''" class="upload_container">
+                                                <img src="{{lists.back_img_url}}" alt="{{lists.document_name}}" title="{{lists.document_name}}" class="img-responsive">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="edit-status-panel clearfix text-right">
+                                    <a href="javascript:void(0);">
+                                        <span ng-class="(lists.kyc_status == 'A') ? 'user-info block_status_check approve' : (lists.kyc_status == 'R') ? 'user-info block_status_check decline' : 'block_status_check pending'" admin-status-in-hover></span>
+                                    </a>
+                                    <div class="user-info-main">
+                                        <div class="user-info-message">
+                                            <div class="user-i-name">
+                                                <p>{{lists.admin_message_kyc}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#/dashboard/profile/kyc-edit/{{lists.id}}/{{lists.kyc_status}}"><span class="pencile-edit"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="h_line">
+                </div> -->
+                <div ng-if="total_count!=0" class="ng-scope">  
+                    <div class="row hero_row add_mandatory">
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-center left-sidebar text-xs-center">
+                        <a href="#" class="btn btn-round btn-orange" title="ADD MORE"><i class="fa fa-plus" aria-hidden="true"></i>Add mandatory</a> 
+                        </div>
+                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 text-center">
+                            <strong>Pan Id</strong>
+                        </div>
+                    </div>  
+                    <hr class="h_line">
+                    <div class="row hero_row add_mandatory">
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-center left-sidebar text-xs-center">
+                        <a href="#" class="btn btn-round btn-orange" title="ADD MORE"><i class="fa fa-plus" aria-hidden="true"></i>Add Any One</a> 
+                        </div>
+                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 text-center">
+                            <strong>Voter Id, passport, addhar, driving</strong>
+                        </div>
+                    </div>               
+                    <!-- <div class="row hero_row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-10col-lg-10 text-left  ">
+                            No records found
+                        </div>
+                    </div> -->
+                    <hr class="h_line">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

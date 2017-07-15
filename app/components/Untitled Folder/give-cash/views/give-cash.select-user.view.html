@@ -1,0 +1,152 @@
+   <section class="wallet-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <div class=" wallet-header">
+                    <h2><a href="javascript:void(0)"> MPokket Wallet  </a></h2>
+                    <h2 class="active">BANK</h2>
+                    </div>
+                </div>
+            </div>
+            <!--// end wallet header -->
+            <div class="row wallet-balance-allocation">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left text-xxs-center">
+                    <div class="balance-addcash-orange">
+                        <h5>wallet balance</h5>
+                        <h3><span class="rupee-sign">{{walletAmount | currency:"":0}}</span></h3>
+                        <a href="javascript:void(0);" ng-click="viewAddCashPopup();" class="btn btn-success add_cash pull-right" title="Load Cash">Load Cash</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left text-xxs-center">
+                    <div class=" balance-givecash-white">
+                     <form class="login-form" name="giveCash" role="form" novalidate ng-submit="giveCashSelectedUsers();">
+                        <h6>AFTER GIVING CASH, YOUR NEW WALLET BALANCE WILL BE</h6>
+                        <h3><span class="rupee-sign">{{updatedWalletAmount | currency:"":0}}</span></h3>
+                         <input type ="submit"  value="Give Cash" class="btn btn-success give_cash pull-right btn-round "  ng-disabled = "updatedWalletAmount == walletAmount" /> 
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <!--// end wallet-auto-allocation -->
+            <div class="row wallet-auto-allocation ">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-left  text-xxs-center">
+                    <div class="auto_alo_blue clearfix">
+                        <h5>select user</h5>
+                        <a href="#/dashboard/give-cash/auto-allocation" class="btn btn-success select_users pull-right btn-round " title="select users">Auto allocate</a>
+                    </div>
+                </div>
+            </div>
+            <!--// end select user heading -->
+            <div class="row wallet-select-user-sort">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-sm-center text-xs-center gvcsh_srch">
+                    <ul>
+                        <li class="label_h">FILTER BY:</li>
+                        <li class="principal-amount">
+                            <select name="principal-amount-dropdown" class="form-control form-dropdown  small_select" ng-model="filterByAmount" >
+
+                                <option value="">PRINCIPAL AMOUNT</option>
+                                <option ng-repeat="principle_amount in principle_amount" value="{{principle_amount.amount}}">{{principle_amount.amount}}</option>
+
+
+                            </select>
+                        </li>
+                        <!--// end principal amount -->
+                        <li class="tenure-dopdown">
+                            <select name="tenure-dopdown" class="form-control form-dropdown small_select" ng-model="filterByTenure" >
+                                <option value="">tenure</option>
+                                <option value="1">1</option>
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="9">9</option>
+                                <option value="12">12</option>
+                                <option value="18">18</option>
+                                <option value="24">24</option>
+                            </select>
+                        </li>
+                        <!--// end tenure-dopdown -->
+                        <li class=" one_time-dopdown">
+                            <select name="tenure-dopdown" class="form-control form-dropdown small_select" ng-model="filterByPaymntType"  >
+                                <option value="">REPAYMENT TYPE</option>
+
+                                <option ng-repeat="payment_type in payment_type" value="{{payment_type.id}}">{{payment_type.payment_type}}</option>
+
+                             
+                            </select>
+                        </li>
+                        <!--// end one time -->
+                        <li class="city-dopdown">
+                            <div class="auto_sugst">
+                                <input class="form-control" placeholder="City" type="text" name="city" ng-model="searchByCity" >
+                                <!-- <ul class="city_list">
+                                    <li><a href="#"><Lorem ipsum</a></li>
+                                </ul> -->
+                            </div>
+                        </li>
+                        <!--// end city -->
+                        <li class="state-dopdown">
+                           <div class="auto_sugst">
+                                <input class="form-control" placeholder="state" type="text" name="city" ng-model="searchByState" >
+                                <!-- <ul class="city_list">
+                                    <li><a href="#"Lorem ipsum</a></li>
+                                </ul> -->
+                            </div>
+                            <!--// state city -->
+                        </li>
+                        <li class="college-dopdown">
+                            <div class="auto_sugst">
+                                <input class="form-control" placeholder="college" type="text" name="city" ng-model="searchByColg" >
+                                <!-- <ul class="city_list">
+                                    <li><a href="#">Lorem ipsum</a></li>
+                                </ul> -->
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);"><i class="fa fa-search" aria-hidden="true" ng-click="allCashRequest()"></i></a>
+                        </li>
+                        <!--// end college -->
+                    </ul>
+                </div>
+            </div>
+            <!--// end wallet-auto-allocation -->
+            <!--start user-filter-profile -->
+            <div class="row wallet-select-user-profile">
+                
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" dir-paginate="lists in allUserCashRequest|itemsPerPage:itemsPerPage" current-page="pageno" total-items="total_count" id="{{lists.fk_user_loan_id}}">
+
+                    <div class="profile_card">
+                        <a href="javascript:void(0)" id="selectLoanUser_{{lists.fk_user_loan_id}}" class="">
+                            <figure class="profile">
+<!--                                 <img  class="profile-img" alt={{lists.img_display_name}}>
+ -->                                <span class="profile-n-img">{{lists.img_display_name}}</span>
+                            </figure>
+                            <div class="left_panel">
+                                <h3 class="p_name">{{lists.display_name}}</h3>
+                                <p class="p_addr">{{lists.city_name}}</p>
+                                <p class="p_addr">{{lists.state_name}}</p>
+                                <p class="p_sec">{{lists.name_of_institution}}</p>
+                            </div>
+                            <div class="right_panel pull-right">
+                                <p class="p_rupee rupee-sign">{{lists.calc_arl}}</p>
+                                <p class="p_year">{{lists.input_npm}} month</p>
+                                <strong class="p_p_method">{{lists.payment_type}}</strong>
+                            </div>
+                            <div class="p_date">{{lists.loan_request_timestamp}}</div>
+
+                            <span ng-click ="selectLoanUser('selectLoanUser_'+lists.fk_user_loan_id,lists.fk_user_loan_id,lists.calc_arl)"  class="user_select"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" ng-if="total_count==0">  
+                    <span align="center">No record found</span>
+                </div>
+            </div>
+            <div class="row pagination-footer text-center">
+                <dir-pagination-controls
+                direction-links="true"
+                boundary-links="true" 
+                on-page-change="allCashRequest(newPageNumber)" >
+                </dir-pagination-controls>
+            </div>
+        </div>
+    </section>

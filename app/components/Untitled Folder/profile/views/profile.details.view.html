@@ -1,0 +1,186 @@
+<section class="profile-section">
+    <div class="container">
+        <div class="hero-section">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                    <div class="hero-panel text-left clearfix">
+                        <h1>profile</h1>
+                        <ul class="right-hero-panel clearfix">
+                            <li class="active">
+                                <a href="#/dashboard/profile/details"> <i class="fa-p profile"></i>
+                                    <p>profile</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/kyc"> <i class="fa-p kyc"></i>
+                                    <p>kyc</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/bank"> <i class="fa-p bank"></i>
+                                    <p>bank</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--// end row -->
+            <!--// end hero-panel -->
+            <div class="hero-body text-left status profile_view prof-full">
+                <p class="error-message show" ng-if="errorMessage">{{errorMessage}}</p>
+                <p class="success-message show" ng-if="successMessage">{{successMessage}}</p>
+                <div class="row hero_row">
+                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                        <div class="avatar-container">
+                            <span ng-if="(userProfile.profile_picture_file_extension != null) && (userProfile.profile_picture_file_extension != '')">
+                                <img src="{{userProfile.profile_image_url}}" class="img-responsive" alt="" id="profile_image_preview">
+                            </span>                            
+                            <span ng-if="(userProfile.profile_picture_file_extension == null) || (userProfile.profile_picture_file_extension == '')">
+                                <img src="assets/img/avatar/avatar_3.svg" class="img-responsive" alt="" id="profile_image_preview">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 text-left">
+                        <div class="right-box-hero clearfix  profile_view_main">
+                            <div class="left-view-panel clearfix">
+                                <h3>{{userProfile.display_name}}</h3>
+                                <p>{{userProfile.f_name+' '+userProfile.m_name+' '+userProfile.l_name}}</p>
+                            </div>
+                            <div class="edit-status-panel clearfix text-right">
+                                <a href="javascript:void(0);">
+                                   <!--  <span ng-class="(userProfile.admin_status_profile_name == 'R') ? 'user-info block_status_check decline' : (userProfile.admin_status_profile_name == 'P') ? 'user-info block_status_check pending' : 'block_status_check approve'" admin-status-in-hover></span> -->
+                                    <span ng-class="(userProfile.admin_status_profile_name == 'A') ? 'user-info block_status_check approve' : (userProfile.admin_status_profile_name == 'R') ? 'user-info block_status_check decline' : 'block_status_check pending'" admin-status-in-hover></span>
+                                </a>
+                                <!-- tooltip start -->
+                                <div class="user-info-main">
+                                    <div class="user-info-message">
+                                        <div class="user-i-name">
+                                            <p>{{userProfile.admin_message_profile_name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- tooltip end -->                             
+                                <a href="#/dashboard/profile/edit"><span class="pencile-edit"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="h_line profile-name-view-h">
+                <div class="row hero_row">
+                    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 text-right left-sidebar">
+                        <h2>residence address</h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 text-left  ">
+                        <div class="right-box-hero clearfix">
+                            <div class="left-view-panel clearfix">
+                                <div>
+                                    <p class="label-css">street 1:</p>
+                                    <p class="label-css-strg">{{userProfile.residence_street1}}</p>
+                                </div>
+                                <div>
+                                    <p class="label-css">street 2:</p>
+                                    <p class="label-css-strg">{{userProfile.residence_street2}}</p>
+                                </div>
+                                <div>
+                                    <p class="label-css">street 3:</p>
+                                    <p class="label-css-strg">{{userProfile.residence_street3}}</p>
+                                </div>
+                            </div>
+                            <div class="right-view-panel clearfix">
+                                <div>
+                                    <p class="label-css">pincode:</p>
+                                    <p class="label-css-strg">{{userProfile.residence_zipcode}}</p>
+                                </div>
+                                <div>
+                                    <p class="label-css">city:</p>
+                                    <p class="label-css-strg">{{userProfile.residence_city}}</p>
+                                </div>
+                                <div>
+                                    <p class="label-css">state:</p>
+                                    <p class="label-css-strg">{{userProfile.residence_state}}</p>
+                                </div>
+                            </div>
+                            <div class="edit-status-panel clearfix text-right">
+                                <a href="javascript:void(0);">
+                                  <!--   <span ng-class="(userProfile.admin_status_residence_address == 'R') ? 'user-info block_status_check decline' : (userProfile.admin_status_residence_address == 'P') ? 'user-info block_status_check pending' : 'block_status_check approve'" admin-status-in-hover></span> -->
+                                    <span ng-class="(userProfile.admin_status_residence_address == 'A') ? 'user-info block_status_check approve' : (userProfile.admin_status_residence_address == 'R') ? 'user-info block_status_check decline' : 'block_status_check pending'" admin-status-in-hover></span>
+                                </a>
+                                <!-- <a href="javascript:void(0);"><span class="pencile-edit"></span></a> -->
+                                <!-- tooltip start -->
+                                <div class="user-info-main">
+                                    <div class="user-info-message">
+                                        <div class="user-i-name">
+                                            <p>{{userProfile.admin_message_residence_address}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- tooltip end -->  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--// end hero-body -->
+                <hr class="h_line">
+                <div class="row hero_row">
+                    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 text-right left-sidebar">
+                        <h2>personal info</h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 text-left  ">
+                        <div class="right-box-hero clearfix">
+                            <div class="left-view-panel clearfix">
+                                <div>
+                                    <p class="label-css">OCCUPATION:</p>
+                                    <p class="label-css-strg">{{userProfile.profession_type}}</p>
+                                </div>
+                                <div>
+                                    <p class="label-css">DOB:</p>
+                                    <p class="label-css-strg">{{userProfile.date_of_birth | date : "MMM dd, y"}}</p>
+                                </div>
+                                <div>
+                                    <p class="label-css">Father’s name</p>
+                                    <p class="label-css-strg">{{userProfile.fathers_name}}</p>
+                                </div>
+                            </div>
+                            <div class="right-view-panel clearfix">
+                                <div>
+                                    <p class="label-css">GENDER:</p>
+                                    <p class="label-css-strg">{{userProfile.gender}}</p>
+                                </div>
+                                <div>
+                                    <p class="label-css">MARITAL STATUS:</p>
+                                    <p class="label-css-strg">{{userProfile.marital_status}}</p>
+                                </div>
+                                <div>
+                                    <p class="label-css">RESIDENCE STATUS:</p>
+                                    <p class="label-css-strg">{{userProfile.residence_status}}</p>
+                                </div>
+                            </div>
+                            <div class="edit-status-panel clearfix text-right">
+                                <a href="javascript:void(0);">
+                                 <!--    <span ng-class="(userProfile.admin_status_other_info == 'R') ? 'user-info block_status_check decline' : (userProfile.admin_status_other_info == 'P') ? 'user-info block_status_check pending' : 'block_status_check approve'"admin-status-in-hover></span> -->
+                                    <span ng-class="(userProfile.admin_status_other_info == 'A') ? 'user-info block_status_check approve' : (userProfile.admin_status_other_info == 'R') ? 'user-info block_status_check decline' : 'block_status_check pending'"admin-status-in-hover></span>
+                                </a>                                
+                                <!-- <a href="javascript:void(0);"><span class="pencile-edit"></span></a> -->
+                                <!-- tooltip start -->
+                                <div class="user-info-main">
+                                    <div class="user-info-message">
+                                        <div class="user-i-name">
+                                            <p>{{userProfile.admin_message_other_info}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- tooltip end -->  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--// end hero-body -->
+            </div>
+            <!--// end row -->
+            <!--// end profile header -->
+        </div>
+        <!--// end hero-section -->
+    </div>
+    <!--// end container -->
+</section>

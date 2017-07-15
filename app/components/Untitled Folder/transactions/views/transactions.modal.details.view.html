@@ -1,0 +1,82 @@
+<div class="modal-content mpokketmodal">
+    <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel();">&times;</button>
+        <div class="lender_transaction_popup">
+            <h2>Transaction Details</h2>
+            <div class="transac_dtls" style="vertical-align:top;">
+                <div class="transac_dtlscont">
+                    <h3>Cash Details</h3>
+                    <div class="dtls_list">
+                        <strong>ID</strong>
+                        <span>{{loanDetails.unique_loan_code}}</span>
+                    </div>
+                    <div class="dtls_list">
+                        <strong>Principal Amount</strong>
+                        <span><i class="fa fa-inr" aria-hidden="true"></i>{{loanDetails.lender_arl}}</span>
+                    </div>
+                    <div class="dtls_list">
+                        <strong>Total Fees</strong>
+                        <span class="date_sec">{{loanDetails.calc_lfa}}</span>
+                    </div>
+                    <div class="dtls_list">
+                        <strong>Approved Date</strong>
+                        <span class="date_sec">{{loanDetails.approve_date}}</span>
+                    </div>
+                    <div class="dtls_list">
+                        <strong>Accepted Date</strong>
+                        <span class="date_sec">{{loanDetails.accepted_date}}</span>
+                    </div>
+                </div>
+
+                <div class="transac_dtlscont" style="vertical-align:top;">
+                    <h3>Transaction Status</h3>
+                    <div class="dtls_list">
+                        <strong>Status</strong>
+                        <span ng-if="loanDetails.is_loan_closed == '1'">CLOSED</span>
+                        <span ng-if="loanDetails.is_loan_closed == '0'">OPEN</span>
+                    </div>
+                    <div class="dtls_list">
+                        <strong>Payment Type</strong>
+                        <span><i  aria-hidden="true"></i>One-Time</span>
+                    </div>
+                    <div class="dtls_list">
+                        <strong>Tenure</strong>
+                        <span class="date_sec">{{loanDetails.input_npm}}</span>
+                    </div><div class="dtls_list">
+                        <strong>Rate of Interest</strong>
+                        <span class="date_sec">{{loanDetails.input_air}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="paymnt_dtls lender_popup_payment">
+                <div class="table-responsive-sec clearfix">
+                    <h4>payments details</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Due</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong><i class="fa fa-inr" aria-hidden="true"></i>{{paymentDetails.lender_repayment_amount}}</strong> <em class="gry_txt">{{paymentDetails.sch_date}}</em></td>
+                                <td><strong><i class="fa fa-inr" aria-hidden="true"></i>{{paymentDetails.lender_repayment_amount}}</strong> <em class="gry_txt">{{paymentDetails.actual_payment_date}}</em></td>
+
+                                <td><span  ng-if="paymentDetails.payment_status == '1-O'" class="ovrdue_txt">OVERDUE</span>
+                                <span  ng-if="paymentDetails.payment_status == '2-D'" class="due_txt">DUE</span>
+                                <span  ng-if="paymentDetails.payment_status == '3-U'" class="open_txt">UPCOMING</span>
+                                <span  ng-if="paymentDetails.payment_status == '4-P'" class="close_txt">PAID</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- <div class="form-group payment_btn lender_popbtn">
+                <input id="code" value="Email xls" class="btn btn-success btn-blue" type="submit">
+                <input id="code" value="Email pdf" class="btn btn-success" type="submit">
+            </div> -->
+        </div>
+    </div>
+</div>

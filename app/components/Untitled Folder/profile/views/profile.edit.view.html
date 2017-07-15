@@ -1,0 +1,315 @@
+<section class="profile-section">
+    <div class="container">
+        <div class="hero-section">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                    <div class="hero-panel text-left clearfix">
+                        <h1>edit Profile</h1>
+                        <ul class="right-hero-panel clearfix">
+                            <li class="active">
+                                <a href="#/dashboard/profile/details"> <i class="fa-p profile"></i>
+                                    <p>profile</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/kyc"> <i class="fa-p kyc"></i>
+                                    <p>kyc</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/bank"> <i class="fa-p bank"></i>
+                                    <p>bank</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--// end row -->
+            <!--// end hero-panel -->
+            <div class="hero-body text-left status ">
+                <!-- Start edit Profile -->
+                <p class="error-message show" ng-if="errorMessage">{{errorMessage}}</p>
+                <p class="success-message show" ng-if="successMessage">{{successMessage}}</p>
+                <form class="invitation-form" role="form" name="profileEdit" ng-submit="doProfileEdit(userProfile)" novalidate>
+                    <!-- <div ng-class="(userProfile.admin_status_profile_name == 'R') ? 'row hero_row status_check decline' : (userProfile.admin_status_profile_name == 'P') ? 'row hero_row status_check pending' : 'row hero_row status_check approve'"> -->
+                    <div ng-class="(userProfile.admin_status_profile_name == 'A') ? 'row hero_row status_check approve' : (userProfile.admin_status_profile_name == 'R') ? 'row hero_row status_check decline' : 'row hero_row status_check pending'">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                            <label ng-class="(userProfile.profile_picture_allowed == '0') ? 'avatar-container img_decline' : 'avatar-container'">
+                                <span ng-if="(userProfile.profile_picture_file_extension != null) && (userProfile.profile_picture_file_extension != '')">
+                                    <img src="{{userProfile.profile_image_url}}" class="img-responsive" alt="" id="profile_image_preview">
+                                </span>
+                                <span ng-if="(userProfile.profile_picture_file_extension == null) || (userProfile.profile_picture_file_extension == '')">
+                                    <img src="assets/img/avatar/avatar_3.svg" class="img-responsive" alt="" id="profile_image_preview">
+                                </span>
+                                <!-- <input type="file" id="browse" name="file_name" class="form-control sr-only"/> -->
+                                <input type="file" class="form-control sr-only" id="profile_image" name="profile_image">
+                            </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 text-left">
+                            <div class="right-box-hero-no-border clearfix">
+                                <div class="full-edit-panel clearfix">
+                                    <div class="group-block">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userProfile.display_name" ng-required="true" placeholder="PROFILE NAME">                                  
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                </div>
+                                <div class="full-edit-panel clearfix">
+                                    <div class="group-block">
+                                        <div ng-class="(userProfile.f_name_allowed == '0') ? 'form-group has_remark wrong' : 'form-group'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.f_name" ng-required="true" placeholder="FIRST NAME">                             
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <div ng-class="(userProfile.m_name_allowed == '0') ? 'form-group has_remark wrong' : 'form-group'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.m_name" placeholder="MIDDLE NAME">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <div ng-class="(userProfile.l_name_allowed == '0') ? 'form-group has_remark wrong' : 'form-group'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.l_name" ng-required="true" placeholder="LAST NAME">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //End Edit profile Frist section -->
+                    <hr class="h_line pf-pf-edit">
+                    <!--// Start hero_row -->
+                  <!--   <div ng-class="(userProfile.admin_status_residence_address == 'R') ? 'row hero_row status_check decline' : (userProfile.admin_status_residence_address == 'P') ? 'row hero_row status_check pending' : 'row hero_row status_check approve'"> -->
+                    <div ng-class="(userProfile.admin_status_residence_address == 'A') ? 'row hero_row status_check approve' : (userProfile.admin_status_residence_address == 'R') ? 'row hero_row status_check decline' : 'row hero_row status_check pending'">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                            <h2>residence address</h2>
+                        </div>
+                        <div class="col-xs-12  col-sm-10 col-md-10 col-lg-10 text-left  ">
+                            <div class="right-box-hero clearfix">
+                                <div class="left-edit-panel clearfix">
+                                    <div class="group-block">
+                                        <label for="street_1">street 1:</label>
+                                        <div ng-class="(userProfile.residence_street1_allowed == '0') ? 'form-group has_remark wrong' : 'form-group'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.residence_street1" ng-required="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="street_2">street 2:</label>
+                                        <div ng-class="(userProfile.residence_street2_allowed == '0') ? 'form-group has_remark wrong' : 'form-group'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.residence_street2">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="street_3">street 3:</label>
+                                        <div ng-class="(userProfile.residence_street3_allowed == '0') ? 'form-group has_remark wrong' : 'form-group'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.residence_street3">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="pin_code">PIN CODE:</label>
+                                        <div ng-class="(userProfile.residence_zipcode_allowed == '0') ? 'form-group has_remark wrong search-btn' : 'form-group search-btn'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.residence_zipcode" ng-required="true" positive-number-mask="">
+                                           <label class="search-field-form" ng-click="doSearchPincode('residence');"><i class="fa fa-search fa-fw" aria-hidden="true"></i><span class="sr-only">Search icons</span></label>
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="city">CITY:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userProfile.residence_city" ng-required="true" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="state">STATE:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userProfile.residence_state" ng-required="true" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// end hero_row -->
+                    <hr class="h_line">
+                  <!--   <div ng-class="(userProfile.admin_status_permanent_address == 'R') ? 'row hero_row status_check decline' : (userProfile.admin_status_permanent_address == 'P') ? 'row hero_row status_check pending' : 'row hero_row status_check approve'"> -->
+                    <div ng-class="(userProfile.admin_status_permanent_address == 'A') ? 'row hero_row status_check approve' : (userProfile.admin_status_permanent_address == 'R') ? 'row hero_row status_check decline' : 'row hero_row status_check pending'">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                            <h2>Permanent address</h2>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 text-left">
+                            <div class="right-box-hero clearfix">
+                                <div class="left-edit-panel clearfix">
+                                    <div class="checkbox hero-box-check clearfix">
+                                        <label>
+                                        <input type="checkbox" ng-model="copy_residence" ng-change="docopyResidenceAddress()" />Same as Residence Address
+                                        </label>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="street_1">street 1:</label>
+                                        <div ng-class="(userProfile.permanent_street1_allowed == '0') ? 'form-group has_remark wrong' : 'form-group'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.permanent_street1" ng-required="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="street_2">street 2:</label>
+                                        <div ng-class="(userProfile.permanent_street2_allowed == '0') ? 'form-group has_remark wrong' : 'form-group'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.permanent_street2">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="street_3">street 3:</label>
+                                        <div ng-class="(userProfile.permanent_street3_allowed == '0') ? 'form-group has_remark wrong' : 'form-group'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.permanent_street3">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="pin_code">PIN CODE:</label>
+                                        <div ng-class="(userProfile.permanent_zipcode_allowed == '0') ? 'form-group has_remark wrong search-btn' : 'form-group search-btn'"> 
+                                            <input type="text" class="form-control" ng-model="userProfile.permanent_zipcode" ng-required="true" positive-number-mask="">
+                                           <label class="search-field-form" ng-click="doSearchPincode('permanent');"><i class="fa fa-search fa-fw" aria-hidden="true"></i><span class="sr-only">Search icons</span></label>
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="city">CITY:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userProfile.permanent_city" ng-required="true" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="state">STATE:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userProfile.permanent_state" ng-required="true" ng-disabled="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// end hero_row -->
+                    <hr class="h_line">
+                   <!--  <div ng-class="(userProfile.admin_status_other_info == 'R') ? 'row hero_row status_check decline' : (userProfile.admin_status_other_info == 'P') ? 'row hero_row status_check pending' : 'row hero_row status_check approve'"> -->
+                    <div ng-class="(userProfile.admin_status_other_info == 'A') ? 'row hero_row status_check approve' : (userProfile.admin_status_other_info == 'R') ? 'row hero_row status_check decline' : 'row hero_row status_check pending'">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                            <h2>personal info</h2>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 text-left  ">
+                            <div class="right-box-hero clearfix">
+                                <div class="left-edit-panel clearfix">
+                                    <div class="group-block">
+                                        <label for="street_1">OCCUPATION:</label>
+                                        <div class="form-group">
+                                            <select name="marital-dropdown" class="form-control form-dropdown a2" ng-model="userProfile.fk_profession_type_id" ng-required="true">
+                                                <option value="">SELECT OCCUPATION</option>
+                                                <option ng-repeat="profession_type in editFormDetails.profession_type" value="{{profession_type.id}}">{{profession_type.profession_type}} </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="street_2">DOB:</label>
+                                        <div class="form-group search-btn">
+                                            <input type="text" class="form-control" id="datepicker" ng-model="userProfile.date_of_birth" ng-required="true">                                            
+                                            <label class="search-field-form"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i></label>
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="street_3">father’s name</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" ng-model="userProfile.fathers_name" ng-required="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="pin_code">GENDER:</label>
+                                        <div class="form-group">
+                                            <select name="gender-dropdown" class="form-control form-dropdown a2" ng-model="userProfile.fk_gender_id" ng-required="true">
+                                                <option value="">SELECT GENDER</option>
+                                                <option ng-repeat="gender in editFormDetails.gender" value="{{gender.id}}">{{gender.gender}} </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="city">MARITAL STATUS:</label>
+                                        <div class="form-group">
+                                            <select name="marital-dropdown" class="form-control form-dropdown a2" ng-model="userProfile.fk_marital_status_id" ng-required="true">
+                                                <option value="">SELECT MARITAL STATUS</option>
+                                                <option ng-repeat="marital_status in editFormDetails.marital_status" value="{{marital_status.id}}">{{marital_status.marital_status}} </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="state">RESIDENCE STATUS:</label>
+                                        <div class="form-group">
+                                            <select name="residence-dropdown" class="form-control form-dropdown a2" ng-model="userProfile.fk_residence_status_id" ng-required="true">
+                                                <option value="">SELECT TYPE</option>
+                                                <option ng-repeat="residence_status in editFormDetails.residence_status" value="{{residence_status.id}}">{{residence_status.residence_status}} </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// end hero_row -->
+                    <div class="btn_group_pro_sav_cancl">
+                        <input type="submit" id="code" value="SAVE" class="btn btn-round btn-orange btn_sm" ng-disabled="profileEdit.$invalid">
+                        <a href="javascript:void(0);" class="btn btn-round btn-gray btn_sm btn_cancl" title="add cash">cancel</a>
+                    </div>
+                </form>
+            </div>
+            <!--// end hero-body -->
+            <!--// end profile header -->
+        </div>
+        <!--// end hero-section -->
+    </div>
+    <!--// end container -->
+</section>
+
+<script type="text/javascript">
+    $(function() {
+        /*$('#datepicker').datepicker({
+            altField    : '#alt-datepicker',
+            altFormat   : 'yy-mm-dd',
+            dateFormat  : 'dd/mm/yy'
+        });*/
+        $('#datepicker').datepicker({
+            dateFormat  : 'yy-mm-dd'
+        });
+
+
+        $("#profile_image").change(function (){
+            angular.element(this).scope().uploadImg(this);
+            readURL(this,"profile_image_preview");
+        });
+
+    });
+
+    function readURL(input,id){
+        if (input.files && input.files[0]){
+            var reader = new FileReader();
+            reader.onload = function (e){
+                $('#'+id).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

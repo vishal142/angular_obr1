@@ -1,0 +1,43 @@
+<!-- Modal content-->
+<div class="modal-content mpokketmodal loadcash_pop withdrwl_txt">
+    <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel();">&times;</button>
+        <!-- <h2 class="modal-title modal_hr_head">{{account_no}}</h2> -->
+       <!--  <h2>Load Cash</h2> -->
+       <h1 class="wallet-rupee_withdrwal"><span class="rupee-sign">{{withdrawlMoney}}</span></h1>
+        <p>
+           <strong>The money will be sent to the following bank account by the next working day</strong>
+        </p>
+        <div class="loadcash_list">
+            <ul>
+                <li>
+                    <strong>Account number:</strong>
+                    <span>{{bankDetails.account_number}}</span>
+                </li>
+                <li>
+                    <strong>Bank:</strong>
+                    <span>{{bankDetails.bank_name}}</span>
+                </li>
+                <li>
+                    <strong>Branch:</strong>
+                    <span>{{bankDetails.bank_branch}}</span>
+                </li>
+                <li>
+                    <strong>City:</strong>
+                    <span>{{bankDetails.bank_city}}</span>
+                </li>
+                <li>
+                    <strong>ISFC code:</strong>
+                    <span>{{bankDetails.ifsc_code}}</span>
+                </li>
+            </ul>
+        </div>
+        <p>
+            If you would like to withdraw the funds to a different bank account please visit the Profile section and update the Bank information by setting the intended account as the Primary option
+        </p>
+        <div class="btn_sec">
+            <button type="button" class="btn btn-secondary btn-red btn_shadow" ng-click="cancel();" >Cancel</button>
+            <button type="button" class="btn btn-secondary btn-blue btn_shadow" ng-click = "doWithdrawlfinal(withdrawlMoney)">Confirm</button>
+        </div>
+    </div>
+</div>

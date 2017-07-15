@@ -1,0 +1,33 @@
+<div class="container">
+        <div class="row">
+          <div class="col-lg-offset-3 col-lg-6">
+              <div class="midsection_form">
+                <div class="animated bounceIn">
+                <a href="#"><img src="assets/img/logo.png" title="obr" alt="obr"></a>
+                </div>
+                <div class="form_sec">
+                <p class="alert alert-danger" ng-if="errorMessage">{{errorMessage}}</p>
+                <p class="alert alert-success" ng-if="successMessage">{{successMessage}}</p>
+                  <div class="steps_frgtpswd">
+                    <a href="#">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>Back to login</a>
+                    <span>
+                      Step-02
+                      <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <form role="form" name="verifyPasscode" ng-submit="doverifyPasscode(verifyPasscodeData)">
+                    <div class="form-group">
+                      <input type="text" class="form-control" 
+                       placeholder="Enter the verification code" ng-model="verifyPasscodeData.passcode" required="">
+                    </div>
+                    <div class="forgotpswd"><a href="#"><i class="fa fa-repeat" aria-hidden="true"></i>
+Resend code</a></div>
+                    <button type="submit" class="btn btn-default btn_green animated">submit</button>
+                  </form>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    </div>

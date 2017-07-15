@@ -1,0 +1,135 @@
+<section class="conversation-section">
+    <div class="container payment_bg">
+        <!-- content -->
+        <div class="payment_wrap">
+            <div class="row wallet-select-user-sort payment_tran">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-sm-center text-xs-center">
+                    <h4>payments</h4>
+
+                    <p class="error-message show" ng-if="sentSuccessMessage">{{sentSuccessMessage}}</p>
+                    <p class="success-message show" ng-if="sentErrorMessage">{{sentErrorMessage}}</p>
+
+
+
+                    <ul>
+                        <li class="label_h">Filter by:</li>
+                        <li><span>Repayment Type</span></li>
+                        <li class="principal-amount">
+                            <select name="principal-amount-dropdown" class="form-control form-dropdown  small_select" ng-model="filterByStatus" ng-change="paymentDetails(status)">
+                                <option value="">ALL</option>
+                                <option value="O">OPEN</option>
+                                <option value="C">CLOSED</option>
+                            </select>
+                        </li>
+                        <!--// end principal amount -->
+                        <li>
+                            <div class="dt_sec">
+                                <input type="text" name="" placeholder="Start date" id="sDatepicker" ng-change="dateValidate()" ng-model="searchBystartDate"/>
+                                <a href="javascript:void(0);"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+                            </div>
+                        </li>
+                        <!--// end tenure-dopdown -->
+                        <li>
+                            <div class="dt_sec">
+                                <input type="text" name="" placeholder="End date" id="eDatepicker" ng-change="dateValidate()" ng-model="searchByEndDate"/>
+                                <a href="javascript:void(0);"><i class="fa fa-calendar" aria-hidden="true"></i></a>
+                            </div>
+
+
+                        </li>
+                        <!--// end one time -->
+                        <li class="city-dopdown">
+                            <select name="tenure-dopdown" class="form-control form-dropdown small_select" ng-model="filterByTenure" ng-change="paymentDetails(tenure)">
+                                <option value="">tenure</option>
+                                <option value="1">1</option>
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="9">9</option>
+                                <option value="12">12</option>
+                                <option value="18">18</option>
+                                <option value="24">24</option>
+                            </select>
+                        </li>
+                        <!--// end college -->
+                    </ul>
+                </div>
+            </div>
+           <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+               <div class="table-responsive-sec payment_table clearfix">
+                   <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>&nbsp;</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="lists in transactionDetails|itemsPerPage:itemsPerPage" current-page="pageno" total-items="total_Count" id="{{lists.id}}" class="ng-scope">
+                                <td>{{lists.sch_date}}</td>
+                                <td><i class="fa fa-inr" aria-hidden="true"></i>{{lists.lender_repayment_amount}}</td>
+
+                                <td><span  ng-if="lists.payment_status == '1-O'" class="ovrdue_txt">OVERDUE</span>
+                                <span  ng-if="lists.payment_status == '2-D'" class="due_txt">DUE</span>
+                                <span  ng-if="lists.payment_status == '3-U'" class="open_txt">UPCOMING</span>
+                                <span  ng-if="lists.payment_status == '4-P'" class="close_txt">PAID</span></td>
+
+                                <td><a href="javascript:void(0);" ng-click="viewTransactionDetailsPopup(lists.fk_user_loan_id);" title="View details"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                            </tr>
+                            <tr ng-if="total_Count==0" class="ng-scope">
+                                <td align="center" colspan="5">No record found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+               </div>
+            </div>
+
+            <div class="row pagination-footer text-center">
+                <dir-pagination-controls
+                    direction-links="true"
+                    boundary-links="true" 
+                    on-page-change="paymentDetails(pageno)" >
+                </dir-pagination-controls>
+            </div>
+
+           </div>
+           <div class="form-group payment_btn">
+                <input ng-disabled="total_Count==0" ng-click = "emailTransactionsXLS();" id="code" value="Email xls" class="btn btn-success btn-blue" type="submit">
+                <input ng-disabled="total_Count==0" ng-click = "emailTransactionsPDF();" id="code" value="Email pdf" class="btn btn-success" type="submit">
+            </div>
+       </div>
+        <!-- content -->
+    </div>
+</section>
+
+
+<script type="text/javascript">
+$(function() {
+    /*$('#datepicker').datepicker({
+        altField    : '#alt-datepicker',
+        altFormat   : 'yy-mm-dd',
+        dateFormat  : 'dd/mm/yy'
+    });*/
+    $('#sDatepicker').datepicker({
+        dateFormat  : 'yy-mm-dd'
+    });
+
+});
+</script>
+
+<script type="text/javascript">
+$(function() {
+    /*$('#datepicker').datepicker({
+        altField    : '#alt-datepicker',
+        altFormat   : 'yy-mm-dd',
+        dateFormat  : 'dd/mm/yy'
+    });*/
+    $('#eDatepicker').datepicker({
+        dateFormat  : 'yy-mm-dd'
+    });
+
+});
+</script>

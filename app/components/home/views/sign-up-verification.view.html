@@ -1,0 +1,126 @@
+<!-- ******HEADER start****** -->
+<header id="home_section" class="home_section other_page">
+    <div class="container">
+        <div class="row">
+            <!-- mid-section-logo start -->
+            <div class="col-xxs-8 col-xxs-offset-2 col-xs-6 col-xs-offset-3 col-sm-5 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 no-padding fix_w_m">
+                <div class="nav-container">
+                    <!-- navigation start -->
+                    <div class="mid-section-logo text-center">
+                        <nav class="navbar ">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#/home/main">HOME</a></li>
+                                <li><a href="#/home/about-us">ABOUT</a></li>
+                                <li><a href="#/home/contact-us">CONTACT</a></li>
+                            </ul>
+                        </nav>
+                        <h1 class="logo">
+                        <img src="assets/images/logo-small.png" alt="OBR">
+                    </h1>
+                    </div>
+                    <span class="triangle-down"></span>
+                </div>
+            </div>
+            <!-- right navigation start -->
+            <div class="col-xs-12 col-sm-3 col-md-4 col-lg-4 mob-nav-r registration-navbar-r">
+                <!-- Lender name start -->
+                <div class="dropdown right-navbar">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        <!-- <span class="leander_user">L</span> -->
+                        <span class="leander_user_img">
+                            <img src="assets/img/avatar/avatar_3.svg" alt="user" class="img-responsive ">
+                        </span>
+                        <span Class="lender_name">{{userDetails.display_name}}</span>
+                        <span class="drop-cart"></span>
+                    </a>
+                    <div class="list-group dropdown-menu">
+                        <!-- <a class="list-group-item" href="javascript:void(0);">Profile</a>
+                        <a class="list-group-item" href="javascript:void(0);"> settings </a> -->
+                        <a class="list-group-item" ng-click="logout();" href="javascript:void(0);"> Logout </a>
+                    </div>
+                </div>
+                <!-- //Lender name end -->
+            </div>
+            <!-- end right navbar -->
+        </div>
+    </div>
+</header>
+<!-- ******secondary-content Start****** -->
+<section class="email-mobile-vf-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center email-vf verified-em">
+                <div class="hero-container">
+                    <i class="icon-envelop fa"></i>
+                    <h2>Email Verification</h2>
+                    <span class="before-verified-e" ng-if="userDetails.is_email_id_verified == '0'">
+                        <p class="email_sent">An email has been sent at</p>
+                        <p class="email"><a href="mailto:{{userDetails.email_id}}">{{userDetails.email_id}}</a></p>
+                        <p>Please click on the link to verify your email address. or <strong>ENTER THE OTP</strong></p>
+                         <form role="form" name="emailVerifyForm" novalidate>
+                            <div class="form-group otp_form">
+                                <label for="otp-e">E - </label>
+                                <input type="text" class="form-control" placeholder="ENTER THE CODE" ng-model="verifyEmailData.code" ng-required="true" positive-number-mask="">
+                                <!-- <input type="hidden" class="form-control" ng-model="verifyEmailData.user_id" ng-required="true" > -->
+                                <input type="hidden" class="form-control" ng-model="verifyEmailData.verify_type" ng-required="true" >
+                                
+                                <a ng-click="resendVerifyCode(verifyEmailData.verify_type,userDetails.email_id)"><span class="refresh"></span>Resend Code</a>
+                            </div>
+                            <!-- <a href="javascript:void(0);" class="btn btn_vf btn-success btn-orange">verify</a> -->
+                            <p class="error-message small_error show" ng-if="errorEmailMessage">{{errorEmailMessage}}</p>
+                            <p class="success-message small_sucess show" ng-if="successEmailMessage">{{successEmailMessage}}</p>
+                            <input type="button" id="code" value="verify" class="btn btn_vf btn-success btn-orange" ng-disabled="emailVerifyForm.$invalid" ng-click="doVerify(verifyEmailData)">
+                        </form>
+                    </span>
+                    <span class="after-verified-e" ng-if="userDetails.is_email_id_verified == '1'">
+                        <p class="email-verified"><a href="">{{userDetails.email_id}}</a></p>
+                        <p>Your Email Address has been successfully verified.</p>
+                        <p class="verified"> <span>[ </span> <i class="fa fa-check" aria-hidden="true"></i> verified <span>  &nbsp;]</span></p>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center mobile-vf verified-mb">
+                <div class="hero-container">
+                    <i class="icon-mobile fa"></i>
+                    <h2>Mobile Verification</h2>
+                    <span class="before-verified-m" ng-if="userDetails.is_mobile_number_verified == '0'">
+                        <p class="email_sent"> An sms has been sent at </p>
+                        <p class="email"><a href="tel:+91 {{userDetails.mobile_number}}">+91 {{userDetails.mobile_number}}</a></p>
+                        <p class="vf-mob-num">To verify your mobile number, <strong>ENTER THE OTP</strong></p>
+                        <form role="form" name="mobileVerifyForm" novalidate>
+                            <div class="form-group otp_form">
+                                <label for="otp-m">M - </label>
+                                <input type="text" class="form-control" placeholder="ENTER THE CODE" ng-model="verifyMobileData.code" ng-required="true" positive-number-mask="">
+                                <!-- <input type="hidden" class="form-control" ng-model="verifyMobileData.user_id" ng-required="true"> -->
+                                <input type="hidden" class="form-control" ng-model="verifyMobileData.verify_type" ng-required="true">
+
+                                <a ng-click="resendVerifyCode(verifyMobileData.verify_type,userDetails.mobile_number)"><span class="refresh"></span>Resend Code</a>
+                            </div>
+                            <!-- <a href="javascript:void(0);" class="btn btn_vf btn-success btn-orange">verify</a> -->
+                            <p class="error-message small_error show" ng-if="errorMobileMessage">{{errorMobileMessage}}</p>
+                            <p class="success-message small_sucess show" ng-if="successMobileMessage">{{successMobileMessage}}</p>
+                            <input type="button" id="code" value="verify" class="btn btn_vf btn-success btn-orange" ng-disabled="mobileVerifyForm.$invalid" ng-click="doVerify(verifyMobileData)">
+                        </form> 
+                    </span> 
+                    <span class="after-verified-m" ng-if="userDetails.is_mobile_number_verified == '1'">
+                        <p class="email-verified"><a href="tel:+91 {{userDetails.mobile_number}}">+91 {{userDetails.mobile_number}}</a></p>
+                        <p>Your Mobile Number has been successfully verified.</p>
+                        <p class="verified"> <span> [ </span> <i class="fa fa-check" aria-hidden="true"></i> verified <span> &nbsp;]</span></p>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center vf-btn-gp">
+                <!-- <a href="#/home/contact-us" class="btn btn_sm btn-blue" ng-disabled="userDetails.is_email_id_verified != '1' || userDetails.is_mobile_number_verified != '1'">NEXT</a> -->
+                <input type="button" value="NEXT" class="btn btn_sm btn-blue" ng-disabled="userDetails.is_email_id_verified != '1' || userDetails.is_mobile_number_verified != '1'" ng-click="go('/home/set-mode')">
+            </div>
+        </div>
+        <!--// end mode body -->
+    </div>
+</section>
+
+
+ <footer class="footerSec container-fluid">
+          <p>&copy; 2017 Oberation BBQ Relief. All Rights Reserved.</p>
+      </footer>
+
+

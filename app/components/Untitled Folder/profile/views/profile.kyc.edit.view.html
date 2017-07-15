@@ -1,0 +1,149 @@
+<section class="profile-section">
+    <div class="container">
+        <div class="hero-section">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                    <div class="hero-panel text-left clearfix">
+                        <h1>edit kyc</h1>
+                        <ul class="right-hero-panel clearfix">
+                            <li class="details_button">
+                                <a ng-click="viewKYCInfo();" class="btn btn-round btn-white" title="KYC details">
+                                    <i class="fa fa-info" aria-hidden="true"></i> KYC details</a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/details"> <i class="fa-p profile"></i>
+                                    <p>profile</p>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#/dashboard/profile/kyc"> <i class="fa-p kyc"></i>
+                                    <p>kyc</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/bank"> <i class="fa-p bank"></i>
+                                    <p>bank</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-body text-left status ">
+                <p class="error-message show" ng-if="errorMessage">{{errorMessage}}</p>
+                <p class="success-message show" ng-if="successMessage">{{successMessage}}</p>
+                <form class="invitation-form" role="form" name="kycEdit" ng-submit="doKYCEdit(userKYCDetails)" novalidate>
+
+             <!--        <div ng-class="(userKYCDetails.kyc_status == 'R') ? 'row status_check hero_row decline' : (userKYCDetails.kyc_status == 'P') ? 'row status_check hero_row pending' : 'row status_check hero_row approve'"> -->
+                    <div ng-class="(userKYCDetails.kyc_status == 'A') ? 'row status_check hero_row approve' : (userKYCDetails.kyc_status == 'R') ? 'row status_check hero_row decline' : 'row status_check hero_row pending'">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                            <h2>{{userKYCDetails.document_name}}</h2>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 text-left">
+                            <div class="right-box-hero clearfix">
+                                <div class="left-edit-panel clearfix">
+                                    <div class="group-block">
+                                        <label for="doc_type">Document type:</label>
+                                        <div class="form-group">
+                                            <select name="residence-dropdown" class="form-control form-dropdown a2" ng-model="userKYCDetails.document_type" ng-required="true" ng-disabled="true">
+                                                <option value="">SELECT DOCUMENT TYPE</option>
+                                                <option ng-repeat="docType in userKYCDocType" value="{{docType.id}}">{{docType.docType}} </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="doc_name">DOCUMENT name:</label>
+                                        <div class="form-group">
+                                            <select name="residence-dropdown" class="form-control form-dropdown a2" ng-model="userKYCDetails.fk_kyc_template_id" ng-required="true">
+                                                <option value="">SELECT DOCUMENT NAME</option>
+                                                <option ng-repeat="docName in userKYCDocName" value="{{docName.id}}">{{docName.document_name}} </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                    <div class="group-block">
+                                        <label for="id_number">ID NUMBER:</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="id_number" ng-model="userKYCDetails.kyc_data" ng-required="true">
+                                        </div>
+                                    </div>
+                                    <!--// end form-group -->
+                                </div>
+                                <!--// end left-edit-panel-->
+                                <div class="right-prv-panel clearfix profile_kyc_edit">
+                                    <p class="preview_sec">photo (front &amp; back):</p>
+                                    <figure class="photo_upload">
+                                        <label class="btn-file upload_btn">
+                                            <span class="upload_img"></span>
+                                            <input type="file" class="form-control sr-only" id="kyc_front_image" name="kyc_front_image">
+                                        </label>
+
+                                        <div class="upload_container" ng-if="(userKYCDetails.front_file_name != null) && (userKYCDetails.front_file_name != '')">
+                                            <img src="{{userKYCDetails.front_img_url}}" alt="{{userKYCDetails.document_name}}" title="{{userKYCDetails.document_name}}" class="img-responsive" id="kyc_front_image_preview">
+                                        </div>
+                                        <div class="upload_container" ng-if="(userKYCDetails.front_file_name == null) || (userKYCDetails.front_file_name == '')">
+                                            <img src="" class="img-responsive" alt="" id="kyc_front_image_preview">
+                                            NO FRONT IMAGE
+                                        </div>
+                                    </figure>
+
+                                    <figure class="photo_upload">
+                                        <label class="btn-file upload_btn">
+                                            <span class="upload_img"></span>
+                                            <input type="file" class="form-control sr-only" id="kyc_back_image" name="kyc_back_image">
+                                        </label>
+                                        <div class="upload_container" ng-if="(userKYCDetails.back_file_name != null) && (userKYCDetails.back_file_name != '')">
+                                            <img src="{{userKYCDetails.back_img_url}}" alt="{{userKYCDetails.document_name}}" title="{{userKYCDetails.document_name}}" class="img-responsive" id="kyc_back_image_preview">
+                                        </div>
+                                        <div class="upload_container" ng-if="(userKYCDetails.back_file_name == null) || (userKYCDetails.back_file_name == '')">
+                                            <img src="" class="img-responsive" alt="" id="kyc_back_image_preview">
+                                            NO BACK IMAGE
+                                        </div>
+     
+                                        <!-- <a href="javascript:void(0)" class="remove"></a> -->
+                                    </figure>
+                                </div>
+                                <!--// end right-prv-panel-->
+                                <div class="btn_group_sav_cancl clearfix">
+                                    <input type="submit" id="code" value="SAVE" class="btn btn-round btn-orange btn_sm" ng-disabled="kycEdit.$invalid">
+                                    <a href="javascript:void(0);" class="btn btn-round btn-gray btn_sm btn_cancl" title="cancel">cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<script type="text/javascript">
+    $(function() {
+
+        $("#kyc_front_image").change(function (){
+            angular.element(this).scope().uploadFrontImg(this);
+            readURL(this,"kyc_front_image_preview");
+        });
+
+        $("#kyc_back_image").change(function (){
+            angular.element(this).scope().uploadBankImg(this);
+            readURL(this,"kyc_back_image_preview");
+        });    
+
+    });
+
+    function readURL(input,id){
+        if (input.files && input.files[0]){
+            var reader = new FileReader();
+            reader.onload = function (e){
+                $('#'+id).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

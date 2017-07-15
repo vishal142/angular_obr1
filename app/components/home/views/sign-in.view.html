@@ -1,0 +1,46 @@
+<header class="container-fluid mainHeader">
+   <div class="container">
+  <a class="topLogo" href="#"><img src="assets/images/logo-small.png" alt="OBR"></a>
+    <nav class="container">
+      <ul class="mainMenu">
+        <li><a href="#">Latest Updates</a></li>
+        <li><a href="#">How to get Involved</a></li>
+        <li><a href="#/home/about-us">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="menuDonate"><a href="#">Donations</a></li>
+      </ul>
+      <ul class="topRightSec">
+        <li class="active"><a href="#/home/sign-in">Login</a></li>
+        <li ><a href="#/home/sign-up">Register</a></li>
+        <li><span>212</span><i class="fa fa-bell-o" aria-hidden="true"></i></li>
+      </ul>
+    </nav>
+  </div>
+  </header>
+  <div class="mainBody">
+    <div class="container-fluid">
+      <div class="row loginForm">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 col-centered">
+          <a class="logo" href="#"><img src="assets/images/logo.png" alt="OBR"></a>
+          <p>Welcome to</p>
+          <h1>Operation BBQ Relief</h1>
+
+          <form class="loginFormMain" role="form" ng-submit="doLogin(loginData)" name="loginForm">
+          <div class="alert alert-danger" ng-if="errorMessage">{{errorMessage}}</div>
+            <label>Email Id<i>*</i></label>
+            <input type="text" ng-model="loginData.email">
+            <label>Password<i>*</i></label>
+            <input type="password" ng-model="loginData.password">
+            <p class="forgotPass">Forgot password?</p>
+            <input class="submitLog" type="submit" value="Login">
+          </form>
+            <p class="noAcc">Don't have an account? <a href="#/home/sign-up">Register</a></p>
+            <!--<a href="#" class="donate">Donate</a>-->
+        </div>
+      </div>
+    </div>
+    <footer class="footerSec container-fluid">
+      <p>&copy; 2017 Oberation BBQ Relief. All Rights Reserved.</p>
+  </footer>
+  </div>
+</body>

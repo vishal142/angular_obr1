@@ -1,0 +1,45 @@
+<header id="home_section" class="home_section home_page">
+    <div class="container">
+        <div class="row">
+          
+            <!-- mid-section-logo start -->
+            <div class="col-xxs-12  col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xs-offset-0 col-sm-offset-3 col-md-offset-4 col-lg-offset-4 no-padding ">
+                <!-- navigation start -->
+                <div class="mid-section-logo text-center clearfix">
+                    
+                    <h1 class="logo">
+                        <a href="#"><img src="assets/img/logo.png" class="img-responsive " title="m-pocket" alt="m-pocket"></a>
+                    </h1>
+                    
+                    <p class="error-message show" ng-if="errorMessage">{{errorMessage}}</p>
+                    <form class="invitation-form" role="form" name="loginForm" ng-submit="doLogin(loginData)" novalidate="">
+                        <div class="form-group">
+                           <input type="email" id="email" placeholder="EMAIL ID" class="form-control"  ng-required="true" ng-model="loginData.email">
+                        </div>
+                        <div class="form-group">
+                           <input type="password" id="password" placeholder="PASSWORD" class="form-control" ng-required="true" ng-model="loginData.password">
+                        </div>
+                        <p class="forget-pas text-right"><a href="#"> Forgot password? </a></p>
+                       
+                        <!-- save button -->
+                        <div class="form-group">
+                            <input type="submit" id="sign_in" value="Sign in"  class="btn btn-transparent btn-orange  sign-in " title="Sign in" ng-disabled="loginForm.$invalid" >
+                            <!-- <a href="#" class="btn btn-transparent btn-orange  sign-in pull-left" title="Sign in">Sign in</a> -->
+                        </div>
+
+                        <p class="register_new_user">
+        New here? <a href="#/home/sign-up" >Create an Mpokket account</a>
+      </p>
+
+                    </form>
+                  
+                </div>
+                <div class="triangle-down-container">
+                    <span class="triangle-down"><!-- <span class="coming-soon"><span>Coming soon</span></span> -->
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>

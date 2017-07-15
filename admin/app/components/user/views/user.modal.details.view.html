@@ -1,0 +1,61 @@
+<!-- Modal content-->
+<div class="modal-content mpokketmodal">
+    <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" ng-click="cancel();">&times;</button>
+        <h2 class="modal-title modal_hr_head">User Detail</h2>
+
+
+            <table class="table modal_hr_body_table">
+                <tbody>
+                    
+                     <tr>
+                        <td>Name : &nbsp; &nbsp; {{userDetails.display_name}}</td>
+                       
+                    </tr>
+
+                     <tr>
+                        <td>Email: &nbsp; &nbsp; {{userDetails.email_id}}</td>
+                       
+                    </tr>
+
+                    <tr ng-if="userDetails.is_email_id_verified =='0'">
+                        <td>Email : &nbsp; &nbsp; 
+                        <select name="verify_email" ng-model="userDetails.is_email_id_verified" ng-change="changeStatus(userDetails.is_email_id_verified)">
+                            <option ng-selected="userDetails.is_email_id_verified == 0" value="0">Not Verify</option>
+                            <option ng-selected="userDetails.is_email_id_verified == 1" value="1">Verify</option>
+                        </select>
+
+                        </td>
+                       
+                    </tr>
+
+                     <tr ng-if="userDetails.mobile_number !='0'">
+                        <td>Phone : &nbsp; &nbsp; {{userDetails.mobile_number}}</td>
+                        
+                    </tr>
+
+                     <tr ng-if="userDetails.is_mobile_number_verified =='0'">
+                        <td>Phone : &nbsp; &nbsp; 
+                        <select name ="verify_phone" ng-model="userDetails.is_mobile_number_verified" ng-change="verify_phone(userDetails.is_mobile_number_verified)">
+                            <option ng-selected="userDetails.is_mobile_number_verified == 0" value="0">Not Verify</option>
+                            <option ng-selected="userDetails.is_mobile_number_verified == 1" value="1">Verify</option>
+                        </select>
+
+                        </td>
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+
+             <!-- <input class="btn btn-default" value="Update" type="submit"> -->
+    </div>
+</div>
+
+<script>
+    function changeStatus(val){
+
+        alert(val);
+    }
+
+</script>

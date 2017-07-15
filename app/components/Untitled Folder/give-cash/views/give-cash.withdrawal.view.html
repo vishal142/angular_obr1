@@ -1,0 +1,31 @@
+<section class="wallet-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class=" wallet-header">
+                    <!-- <h2><a href="javascript:void(0)"> MPokket Wallet  </a></h2> -->
+                    <h2 class="active"><a href="#/dashboard/give-cash/mpokket-wallet">BANK</a></h2>
+                </div>
+            </div>
+        </div>
+        <!--// end wallet header -->
+        <div class="row wallet-balance">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <h1 class="large_caption">wallet balance</h1>
+               <!--  <h1 class="wallet-rupee"><span class="rupee-sign">2,00,000</span></h1> -->
+                <h1 class="wallet-rupee"><span class="rupee-sign">{{walletAmount.wallet_amount | currency:"":0}}</span></h1>
+
+                 <form class="login-form" name="giveAmount" role="form" novalidate ng-submit="doWithdrawlPopup(amount);">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <input type="text" name="" class="wallet_amount_set" ng-model = "amount" ng-required="true" positive-number-mask="">
+                    </div>
+                   <!--  <a href="#/dashboard/give-cash/select-user" class="btn btn-round btn-orange add_cash " title="give cash">give cash</a> -->
+                    <input type="submit" value="Submit" class="btn btn-round btn-blue give_cash " ng-disabled="giveAmount.$invalid" /> 
+                </form>               
+                
+            </div>
+        </div>
+        <!--// end wallet content -->
+    </div>
+</section>

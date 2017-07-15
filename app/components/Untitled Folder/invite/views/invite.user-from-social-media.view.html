@@ -1,0 +1,37 @@
+<header id="home_section" class="home_section home_page">
+    <div class="container">
+        <div class="row">         
+            <div class="col-xxs-12  col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xs-offset-0 col-sm-offset-3 col-md-offset-4 col-lg-offset-4 no-padding ">
+                <div class="mid-section-logo text-center clearfix">
+                    
+                    <h1 class="logo">
+                        <a href="javascript:void(0);"><img src="assets/img/logo.png" class="img-responsive " title="m-pokket" alt="m-pokket"></a>
+                    </h1>
+                    <p class="error-message show" ng-if="errorMessage">{{errorMessage}}</p>
+                    <p class="success-message show" ng-if="successMessage">{{successMessage}}</p>
+                    <form class="invitation-form" role="form" name="addInvite" ng-submit="doaddInviteUserSocial(inviteData)" novalidate>
+                        <div class="form-group">
+                            <input type="text" id="inviteeName" placeholder="NAME" class="form-control" ng-model="inviteData.inviteeName" ng-required="true">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="inviteeEmail" placeholder="EMAIL" class="form-control" ng-model="inviteData.inviteeEmail" ng-required="true">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="inviteeMobile" placeholder="MOBILE NUMBER" class="form-control" ng-model="inviteData.inviteeMobile" ng-required="true" positive-number-mask="">
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="form-group">
+                            <input type="submit" id="code" value="SAVE" class="btn btn-success" ng-disabled="addInvite.$invalid">
+                        </div>
+                    </form>                  
+                </div>
+                <div class="triangle-down-container">
+                    <span class="triangle-down">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

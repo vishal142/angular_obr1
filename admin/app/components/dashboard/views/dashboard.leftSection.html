@@ -1,0 +1,43 @@
+<ul id="accordion" class="nav main_left_ul animated zoomInDown">
+        <li>
+        <a href="#/dashboard/welcome" class="{{(breadcrumb == 'Welcome') ? 'active' : ''}}"><span class="left_i"><img src="assets/img/dashboard_home.png" alt=""></span> <span class="ul_mid_txt">Dashboard (Home)</span></a>
+        </li>
+
+      <li>
+        <a href="#/dashboard/employee/list" class="{{(breadcrumb == 'Employee list') ? 'active' : ''}} {{(breadcrumb == 'Employee') ? 'active' : ''}} "><span class="left_i"><img src="assets/img/dashboard_home.png" alt=""></span> <span class="ul_mid_txt">Employee List</span></a>
+        </li>
+         
+
+        <li>
+        <a href="#/dashboard/user/list" class="{{(breadcrumb == 'User list') ? 'active' : ''}} {{(breadcrumb == 'User') ? 'active' : ''}} "><span class="left_i"><img src="assets/img/dashboard_home.png" alt=""></span> <span class="ul_mid_txt">User List</span></a>
+        </li>
+
+       <!--  <li>
+        <a href="#/dashboard/manage_page/list" class="{{(breadcrumb == 'manage_page') ? 'active' : ''}} {{(breadcrumb == 'manage_page') ? 'active' : ''}} "><span class="left_i"><img src="assets/img/dashboard_home.png" alt=""></span> <span class="ul_mid_txt">Manage Page</span></a>
+        </li> -->
+
+
+       <li class="panel">
+        <a data-toggle="collapse" data-parent="#accordion" href="javscript:void(0)" class="extend_menupage {{(breadcrumb == 'Manage Page') ? 'active' : ''}} {{(breadcrumb == 'manage_page') ? 'active' : ''}}"><span class="left_i"><img src="assets/img/manage_location.png" alt="">
+        </span> <span class="ul_mid_txt">Manage Page </span></a>
+        <ul id="collapseOne" class="collapse left_sub_menu">
+         
+          <li class ="active"><a href="#/dashboard/manage_page/about-us"><span id="about-us_page" class="glyphicon glyphicon-play"></span>About us</a></li>
+          
+        </ul>
+        </li>
+
+
+      
+       </ul>
+
+
+      <script>
+      $(document).on('click','.extend_menupage',function(){
+      $("#collapseOne").collapse('show');
+      $("#collapseOne").addClass( "hide_menu_page");
+      $('#collapseOne').collapse('hide');
+
+      
+		});
+      </script>

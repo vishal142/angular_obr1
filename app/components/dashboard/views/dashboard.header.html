@@ -1,0 +1,100 @@
+<header id="home_section" class="home_section seperate_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 mob-nav-l">
+                <div class="dropdown left-navbar">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="toggle-bar">
+                           <span class="bar_i">
+                                <span class="before"></span>
+                                <span class="after"></span>
+                            </span>
+                        </span>
+                    </a>
+                    <div class="list-group dropdown-menu">
+                        <a class="list-group-item {{(carousel == 'dashboard') ? 'arrow active' : ''}}" href="#/dashboard/welcome">dashboard</a>
+                        <!-- sub-dropdown start -->
+                        <div class="has-sub-dropdown">
+                            <a class="list-group-item {{(carousel == 'give-cash') ? 'arrow active' : ''}}" href="#/dashboard/give-cash/mpokket-wallet"> Give Cash </a>
+                            <!-- <ul class=" list-group sub-dropdown-content">
+                                <li><a class="list-group-item" href="javascript:void(0);">Page 1-1</a></li>
+                                <li><a class="list-group-item" href="javascript:void(0);">Page 1-2</a></li>
+                                <li><a class="list-group-item" href="javascript:void(0);">Page 1-3</a></li>
+                            </ul> -->
+                        </div>
+                        <!-- //sub-dropdown start -->
+                        <a class="list-group-item" href="#/dashboard/notifications/list"> Notifications </a>
+                        <a class="list-group-item {{(carousel == 'transactions') ? 'arrow active' : ''}}" href="#/dashboard/transactions/details"> Transactions </a>
+                        <!-- <a class="list-group-item" href="javascript:void(0);"> Rewards </a>
+                        <a class="list-group-item" href="javascript:void(0);"> Switch to Agent </a> -->
+                        <a class="list-group-item {{(carousel == 'conversations') ? 'arrow active' : ''}}" href="#/dashboard/conversations/list"> Support </a>
+                    </div>
+                </div>
+                <h3 ng-if="parentBreadcrumb != ''">{{parentBreadcrumb}}</h3>
+                <h3 ng-if="parentBreadcrumb == ''">{{breadcrumb}}</h3>
+                
+            </div>
+            <!-- end left navbar -->
+            <!-- mid-section-logo start -->
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">
+                <!-- navigation start -->
+                <div class="mid-section-logo text-center clearfix">
+                    <nav class="navbar">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/home/main">HOME</a></li>
+                            <li><a href="#/home/about-us">ABOUT</a></li>
+                            <li><a href="#/home/contact-us">CONTACT</a></li>
+                        </ul>
+                    </nav>
+                    <h1 class="logo">
+                        <a href="javascript:void(0);"><img src="assets/img/logo.png" class="img-responsive animated slideInUp" title="m-pocket" alt="m-pocket"></a>
+                    </h1>
+                </div>
+            </div>
+            <!-- // mid-section-logo end -->
+            <!-- right navigation start -->
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 notification-section mob-nav-r">
+                <!-- bell start -->
+                <a href="#/dashboard/notifications/list">
+                    <div class="notification">
+                        <span>2</span>
+                    </div>
+                </a>
+                <!-- //bell end -->
+                <!-- Lender name start -->
+                <div class="dropdown right-navbar">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        <!-- <span class="leander_user">L</span> -->
+                        <span class="leander_user_img">
+                            <img src="assets/img/avatar/avatar_3.svg" alt="user" class="img-responsive ">
+                        </span>
+                        <span Class="lender_name">{{userDetails.display_name}}</span>
+                        <span class="drop-cart"></span>
+                    </a>
+                    <div class="list-group dropdown-menu sub_menu_list">
+                      <!-- <ul> <li> <a class="list-group-item {{(carousel == 'profile') ? 'active arrow' : ''}}" href="#/dashboard/profile/details">Profile</a></li>
+                        <li><a class="list-group-item sub_setting {{(carousel == 'settings') ? 'active arrow' : ''}}" href="javascript:void(0);"> settings
+                        </a>
+                        <ul>
+                               <li><a href="#">Change Password</a></li>
+                               <li><a href="#">Change Email</a></li>
+                               <li><a href="#">Change Phone</a></li>
+                           </ul>
+                        </li>
+                        <li><a class="list-group-item" ng-click="dh.logout();" href="javascript:void(0);"> logout </a></li>
+                        </ul> -->
+
+
+
+                         <div> <a class="list-group-item {{(carousel == 'profile') ? 'active arrow' : ''}}" href="#/dashboard/profile/details">Profile</a></div>
+                        <div class="sub_setting"><a class="list-group-item  {{(carousel == 'settings') ? 'active arrow' : ''}}" href="#/dashboard/settings/change-email"> settings</a>
+                        </div>
+                        <div><a class="list-group-item" ng-click="dh.logout();" href="javascript:void(0);"> logout </a></div>
+                    </div>
+                </div>
+                <!-- //Lender name end -->
+            </div>
+            <!-- end right navbar -->
+        </div>
+    </div>
+</header>

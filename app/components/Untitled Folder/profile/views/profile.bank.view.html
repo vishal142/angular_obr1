@@ -1,0 +1,108 @@
+<section class="profile-section prof-bank-view">
+    <div class="container">
+        <div class="hero-section">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                    <div class="hero-panel text-left clearfix">
+                        <h1>bank</h1>
+                        <ul class="right-hero-panel clearfix">
+                            <li class="addmore">
+                                <a href="#/dashboard/profile/bank-edit/" class="btn btn-round btn-orange" title="ADD MORE">
+                                    ADD MORE</a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/details"> <i class="fa-p profile"></i>
+                                    <p>profile</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/dashboard/profile/kyc"> <i class="fa-p kyc"></i>
+                                    <p>kyc</p>
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#/dashboard/profile/bank"> <i class="fa-p bank"></i>
+                                    <p>bank</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-body text-left status profile_view">
+                <p class="error-message show" ng-if="errorMessage">{{errorMessage}}</p>
+                <p class="success-message show" ng-if="successMessage">{{successMessage}}</p>
+
+                <div dir-paginate="lists in userBank|itemsPerPage:itemsPerPage" current-page="pageno" total-items="total_count" id="{{lists.id}}" class="ng-scope">
+                    <div class="row hero_row">
+                        <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                            <h2>{{lists.bank_name}}</h2>
+                            <a ng-if="lists.bank_status == 'A' && lists.is_primary == 'Y'" href="javascript:void(0);" class="box-btn box-blank">primary</a>
+                            <a ng-if="lists.bank_status == 'A' && lists.is_primary == 'N'" href="javascript:void(0);" class="box-btn" ng-click="setAsPrimary(lists.id, $index);">set as primary</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 text-left  ">
+                            <div class="right-box-hero clearfix">
+                                <div class="left-view-panel clearfix">
+                                    <div>
+                                        <p class="label-css">a/c no:</p>
+                                        <p class="label-css-strg">{{lists.account_number}}</p>
+                                    </div>
+                                    <div>
+                                        <p class="label-css">ifsc code:</p>
+                                        <p class="label-css-strg">{{lists.ifsc_code}}</p>
+                                    </div>
+                                    <div>
+                                        <p class="label-css">name of bank:</p>
+                                        <p class="label-css-strg">{{lists.bank_name}}</p>
+                                    </div>
+                                </div>
+                                <div class="right-view-panel clearfix">
+                                    <div>
+                                        <p class="label-css">branch:</p>
+                                        <p class="label-css-strg">{{lists.bank_branch}}</p>
+                                    </div>
+                                    <div>
+                                        <p class="label-css">city:</p>
+                                        <p class="label-css-strg">{{lists.bank_city}}</p>
+                                    </div>
+                                    <div>
+                                        <p class="label-css">state:</p>
+                                        <p class="label-css-strg">{{lists.bank_state}}</p>
+                                    </div>
+                                </div>
+                                <div class="edit-status-panel clearfix text-right">
+                                    <a href="javascript:void(0);">
+                                       <!--  <span ng-class="(lists.bank_status == 'R') ? 'user-info block_status_check decline' : (lists.bank_status == 'P') ? 'user-info block_status_check pending' : 'block_status_check approve'" admin-status-in-hover></span> -->
+                                        <span ng-class="(lists.bank_status == 'A') ? 'user-info block_status_check approve' : (lists.bank_status == 'R') ? 'user-info block_status_check decline' : 'block_status_check pending'" admin-status-in-hover></span>
+                                    </a>
+                                    <!-- tooltip start -->  
+                                    <div class="user-info-main">
+                                        <div class="user-info-message">
+                                            <div class="user-i-name">
+                                                <p>{{lists.admin_message_bank}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- tooltip end --> 
+                                    <a href="#/dashboard/profile/bank-edit/{{lists.id}}"><span class="pencile-edit"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="h_line">
+                </div>
+                <div ng-if="total_count==0" class="ng-scope">                   
+                    <div class="row hero_row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 text-right left-sidebar text-xs-center">
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-md-10col-lg-10 text-left  ">
+                            No records found
+                        </div>
+                    </div>
+                    <hr class="h_line">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// end container -->
+</section>

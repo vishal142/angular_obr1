@@ -1,0 +1,64 @@
+<section class="conversation-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class="conv-status-header">
+                    <h3>conversations</h3>
+                </div>
+            </div>
+        </div>
+        <!--// end conversation header -->
+        <div class="row conv-filter-addnew">
+            <div class="col-xxs-12 col-xs-8 col-sm-5 col-md-4 col-lg-3 text-xxs-center">
+                <h6>filter by:</h6>
+                <select name="status-dropdown" class="form-control form-dropdown small_select" ng-model="filterByStatus" ng-change="getAllTicket(pageno)">
+                    <option value="">Status</option>
+                    <option value="O">Open</option>
+                    <option value="P">Processing</option>
+                    <option value="W">Awaiting</option>
+                    <option value="R">Resolved</option>
+                </select>
+            </div>
+            <div class="col-xxs-12 col-xs-4 col-sm-5 col-sm-offset-2 col-md-2 col-md-offset-6 col-lg-2 col-lg-offset-7 text-right text-xxs-center">
+                <a href="#/dashboard/conversations/add" class="btn btn-transparent btn-orange add-new" title="Add new">Add new</a>
+            </div>
+        </div>
+        <!--// end conv-filter-addnew -->
+
+
+        <!--start conversation-status-section -->
+        <div class="row conv-ticket">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" dir-paginate="lists in allTicket|itemsPerPage:itemsPerPage" current-page="pageno" total-items="total_count" id="{{lists.id}}">
+                <div ng-class="(lists.status == 'O') ? 'conv-ticket_card open-status' : ((lists.status == 'P') ? 'conv-ticket_card processing-status' : ((lists.status == 'W') ? 'conv-ticket_card awating-status' : 'conv-ticket_card resolved-status'))">
+                    <a href="#/dashboard/conversations/details/{{lists.id}}" class="clearfix">
+                        <h3 class="ticket-id">Ticket id <span class="blue-c">{{lists.ticket_id}}</span></h3>
+                        <p>{{lists.title}}</p>
+                        <div class="ticket-status" ng-if="lists.status == 'O'">Open</div>
+                        <div class="ticket-status" ng-if="lists.status == 'P'">Processing</div>
+                        <div class="ticket-status" ng-if="lists.status == 'W'">Awaiting your reply</div>
+                        <div class="ticket-status" ng-if="lists.status == 'R'">Resolved</div>
+                        <div class="t_date">{{lists.added_timestamp}}</div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" ng-if="allTicket.length==0">  
+                <span align="center">No record found</span>
+            </div>
+
+             <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <a href="javascript:void(0);" class="show-more">SHOW MORE</a>
+             </div> -->
+        
+        </div>
+
+        <div class="row pagination-footer text-center">
+            <dir-pagination-controls
+                direction-links="true"
+                boundary-links="true" 
+                on-page-change="getAllTicket(newPageNumber)" >
+            </dir-pagination-controls>
+        </div>
+
+    </div>
+</section>

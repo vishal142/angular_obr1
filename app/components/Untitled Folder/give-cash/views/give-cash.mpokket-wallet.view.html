@@ -1,0 +1,28 @@
+<section class="wallet-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class=" wallet-header">
+                    <h2><a href="javascript:void(0)"> MPokket Wallet  </a></h2>
+                    <h2 class="active"><a href="#/dashboard/give-cash/mpokket-wallet">BANK</a></h2>
+                </div>
+            </div>
+        </div>
+        <!--// end wallet header -->
+        <div class="row wallet-balance">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <h1 class="large_caption">wallet balance</h1>
+<!--                 <p class="wallet-details">The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+ -->               <!--  <h1 class="wallet-rupee"><span class="rupee-sign">2,00,000</span></h1> -->
+                <h1 class="wallet-rupee"><span class="rupee-sign">{{walletAmount.wallet_amount | currency:"":0}}</span></h1>
+
+
+                <a href="#/dashboard/give-cash/select-user" class="btn btn-round btn-orange add_cash " title="give cash">give cash</a>
+                <a href="javascript:void(0);" ng-click="viewAddCashPopup();" class="btn btn-round btn-blue give_cash " title="add cash">Load Cash</a>
+                <a href="#/dashboard/give-cash/withdrawal"  class="btn btn-round btn-orange add_cash " title="Withdrawal"  ng-click = "getWalletBalance();">Withdrawal</a>
+                <p class="note"><span>NOTE</span>: Minimum balance required <i class="fa fa-inr" aria-hidden="true"></i> {{walletAmount.minimum_amount}}</p>
+            </div>
+        </div>
+        <!--// end wallet content -->
+    </div>
+</section>
